@@ -12,7 +12,7 @@ that commonly only matters on production.
 However, right now, Plone will raise errors when you visit a file content that use BLOB support,
 without having also the BLOB file.
 
-I don't know if this is good or not (I opened `an issue`__ relaed to this), but for developers this
+I don't know if this is good or not (I opened `an issue`__ related to this), but for developers this
 can be a little boring.
 
 __ http://dev.plone.org/plone/ticket/11293
@@ -24,6 +24,7 @@ Requirements
 ------------
 
 This product has been tested on:
+
 * Plone 3.3 (with plone.app.blob 1.3)
 * Plone 4.0
 
