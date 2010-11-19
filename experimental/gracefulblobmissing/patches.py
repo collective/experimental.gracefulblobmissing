@@ -13,7 +13,7 @@ def patched_field_get_size(self):
         size = 0
     return size
 
-def get_size(self):
+def patched_class_get_size(self):
     f = self.getPrimaryField()
     if f is None:
         return 0

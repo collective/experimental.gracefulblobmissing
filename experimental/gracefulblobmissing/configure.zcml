@@ -11,7 +11,7 @@
 	
     <monkey:patch
         description="Fix get_size method for blob fields"
-        class="plone.app.blob.field"
+        class="plone.app.blob.field.BlobWrapper"
         original="get_size"
         replacement=".patches.patched_field_get_size"
 		docstringWarning="true"
