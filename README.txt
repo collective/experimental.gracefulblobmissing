@@ -24,9 +24,8 @@ Requirements
 ------------
 
 This product has been tested on:
-* Plone 3.3
+* Plone 3.3 (with plone.app.blob 1.3)
 * Plone 4.0
-* plone.app.blob 1.3
 
 Warning
 -------
