@@ -1,0 +1,30 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+	xmlns:monkey="http://namespaces.plone.org/monkey"
+	xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="experimental.gracefulblobmissing">
+
+	<include package="collective.monkeypatcher" />
+	<include package="collective.monkeypatcher" file="meta.zcml" />
+	
+    <monkey:patch
+        description="Fix get_size method for blob fields"
+        class="plone.app.blob.field"
+        original="get_size"
+        replacement=".patches.patched_field_get_size"
+		docstringWarning="true"
+		zcml:condition="installed plone.app.blob"
+        />
+
+    <monkey:patch
+        description="Fix get_size method for blob fields"
+        class="Products.ATContentTypes.content.base.ATCTMixin"
+        original="get_size"
+        replacement=".patches.patched_class_get_size"
+		docstringWarning="true"
+		zcml:condition="installed plone.app.blob"
+        />
+
+</configure>
