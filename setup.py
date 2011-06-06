@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1.0'
+version = '0.1.1dev'
 
 setup(name='experimental.gracefulblobmissing',
       version=version,
-      description="Patch Plone to not brake when visiting file like contents where related BLOB is missing",
+      description="Patch for Plone. Not raise error when visiting file contents with missing BLOB file",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
@@ -13,7 +13,7 @@ setup(name='experimental.gracefulblobmissing',
       classifiers=[
         "Framework :: Plone",
         "Programming Language :: Python",
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         ],
       keywords='plone blob patch',
       author='RedTurtle Technology',
@@ -27,6 +27,7 @@ setup(name='experimental.gracefulblobmissing',
       install_requires=[
           'setuptools',
           'collective.monkeypatcher'
+          'plone.app.blob',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
