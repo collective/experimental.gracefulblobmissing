@@ -15,7 +15,15 @@
         original="get_size"
         replacement=".patches.patched_field_get_size"
 		docstringWarning="true"
-		zcml:condition="installed plone.app.blob"
+        />
+
+    <monkey:patch
+        description="Fix index_html method for blob fields"
+        class="plone.app.blob.field.BlobField"
+        original="index_html"
+        replacement=".patches.patched_field_index_html"
+		docstringWarning="true"
+		preserveOriginal="true"
         />
 
     <monkey:patch
@@ -24,7 +32,6 @@
         original="get_size"
         replacement=".patches.patched_class_get_size"
 		docstringWarning="true"
-		zcml:condition="installed plone.app.blob"
         />
 
 </configure>

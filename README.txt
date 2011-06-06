@@ -22,7 +22,7 @@ Requirements
 
 This product has been tested on:
 
-* Plone 3.3 (with plone.app.blob 1.3)
+* Plone 3.3 (with plone.app.blob 1.5)
 * Plone 4.0
 
 Warning
@@ -30,6 +30,15 @@ Warning
 
 This is designed only for **development/staging** environment. *Do not use in production* if you are
 not sure of what you are doing!
+
+Credits
+=======
+
+Developed with the support of `S. Anna Hospital, Ferrara`__; S. Anna Hospital supports the
+`PloneGov initiative`__.
+
+__ http://www.ospfe.it/
+__ http://www.plonegov.it/
 
 Authors
 =======
