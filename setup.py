@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.2.0'
+version = '0.2.1dev'
 
 setup(name='experimental.gracefulblobmissing',
       version=version,
@@ -26,7 +26,7 @@ setup(name='experimental.gracefulblobmissing',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'collective.monkeypatcher',
+          'collective.monkeypatcher>=1.0',
           'plone.app.blob',
           # -*- Extra requirements: -*-
       ],

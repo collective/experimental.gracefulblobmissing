@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.2.1 (Unreleased)
+------------------
+
+* fixed dependency on ``collective.monkeypatcher`` >= 1.0 [keul]
+
 0.2.0 (2011-06-06)
 ------------------
 
