@@ -26,7 +26,7 @@ setup(name='experimental.gracefulblobmissing',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'collective.monkeypatcher>=1.0b2',
+          'collective.monkeypatcher>=1.0',
           'plone.app.blob',
           # -*- Extra requirements: -*-
       ],
