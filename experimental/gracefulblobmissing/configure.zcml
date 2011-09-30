@@ -34,4 +34,14 @@
 		docstringWarning="true"
         />
 
+    <monkey:patch
+        description="Fix getScale method for blob mixins"
+        class="plone.app.blob.mixins.ImageFieldMixin"
+        original="getScale"
+        replacement=".patches.patched_getScale"
+		docstringWarning="true"
+        />
+
+
+
 </configure>
