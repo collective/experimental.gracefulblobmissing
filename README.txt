@@ -1,5 +1,7 @@
-Introduction
-============
+.. contents::
+
+How to use
+==========
 
 The `BLOB support in Plone`__ is amazing for a lot of reasons.
 
@@ -17,8 +19,14 @@ __ http://dev.plone.org/plone/ticket/11293
 This product will simply monkey-pach some points inside Plone, so visiting a ATFile/ATImage without its
 BLOB available will not show any errors to visitors.
 
+Catalog
+-------
+
+This product also patch the ``SearchableText`` Archetypes method, so you can reindex
+you catalog without errors.
+
 Requirements
-------------
+============
 
 This product has been tested on:
 
@@ -27,7 +35,7 @@ This product has been tested on:
 * Plone 4.1
 
 Warning
--------
+=======
 
 This is designed only for **development/staging** environment. *Do not use in production* if you are
 not sure of what you are doing!
@@ -49,7 +57,7 @@ Authors
 
 This product was developed by RedTurtle Technology team.
 
-.. image:: http://www.redturtle.net/redturtle_banner.png
+.. image:: http://www.redturtle.it/redturtle_banner.png
    :alt: RedTurtle Technology Site
-   :target: http://www.redturtle.net/
+   :target: http://www.redturtle.it/
 

@@ -50,3 +50,47 @@ def patched_getScale(self, instance, scale=None, **kwargs):
         except POSKeyError:
             pass
     return None
+
+def patched_SearchableText(self):
+    data = []
+    charset = self.getCharset()
+    for field in self.Schema().fields():
+        if not field.searchable:
+            continue
+        method = field.getIndexAccessor(self)
+        try:
+            datum =  method(mimetype="text/plain")
+        except TypeError:
+            # Retry in case typeerror was raised because accessor doesn't
+            # handle the mimetype argument
+            try:
+                datum =  method()
+            except (ConflictError, KeyboardInterrupt):
+                raise
+            except:
+                continue
+        except POSKeyError:
+            datanum = ''
+        if datum:
+            type_datum = type(datum)
+            vocab = field.Vocabulary(self)
+            if isinstance(datum, list) or isinstance(datum, tuple):
+                # Unmangle vocabulary: we index key AND value
+                vocab_values = map(lambda value, vocab=vocab: vocab.getValue(value, ''), datum)
+                datum = list(datum)
+                datum.extend(vocab_values)
+                datum = ' '.join(datum)
+            elif isinstance(datum, basestring):
+                if isinstance(datum, unicode):
+                    datum = datum.encode(charset)
+                value = vocab.getValue(datum, '')
+                if isinstance(value, unicode):
+                    value = value.encode(charset)
+                datum = "%s %s" % (datum, value, )
+
+            if isinstance(datum, unicode):
+                datum = datum.encode(charset)
+            data.append(str(datum))
+
+    data = ' '.join(data)
+    return data

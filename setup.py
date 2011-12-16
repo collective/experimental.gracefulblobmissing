@@ -5,7 +5,7 @@ version = '0.3.0'
 
 setup(name='experimental.gracefulblobmissing',
       version=version,
-      description="Patch for Plone. Not raise error when visiting file contents with missing BLOB file",
+      description="Patch for Plone. Don't raise errors for file contents with missing BLOB file",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
@@ -17,7 +17,7 @@ setup(name='experimental.gracefulblobmissing',
         ],
       keywords='plone blob patch',
       author='RedTurtle Technology',
-      author_email='sviluppoplone@redturtle.net',
+      author_email='sviluppoplone@redturtle.it',
       url='http://svn.plone.org/svn/collective/experimental.gracefulblobmissing/',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),

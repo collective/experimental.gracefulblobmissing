@@ -42,6 +42,12 @@
 		docstringWarning="true"
         />
 
-
+    <monkey:patch
+        description="Fix SearchableText for Archetypes when blob is missing"
+        class="Products.Archetypes.BaseObject.BaseObject"
+        original="SearchableText"
+        replacement=".patches.patched_SearchableText"
+		docstringWarning="true"
+        />
 
 </configure>

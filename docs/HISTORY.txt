@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.4.0 (Unreleased)
+------------------
+
+* fixed errors when reindexing SearchbleText index [keul]
+
 0.3.0 (2011-09-30)
 ------------------
 
