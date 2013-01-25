@@ -9,6 +9,10 @@ from Products.CMFCore.utils import getToolByName
 from plone.app.blob.utils import openBlob
 from plone.app.imaging.interfaces import IImageScaleHandler
 
+from sh import mkdir, touch
+from ZODB.blob import BlobFile
+
+
 def patched_field_get_size(self):
     try:
         blob = openBlob(self.blob)
@@ -24,7 +28,7 @@ def patched_class_get_size(self):
         return 0
     try:
         return f.get_size(self) or 0
-    except POSKeyError: 
+    except POSKeyError:
         return 0
 
 def patched_field_index_html(self, instance, REQUEST=None, RESPONSE=None, disposition='inline'):
@@ -94,3 +98,10 @@ def patched_SearchableText(self):
 
     data = ' '.join(data)
     return data
+
+
+def patched_blob_init(self, name, mode, blob):
+    mkdir("-p", '/'.join(name.split('/')[:-1]))
+    touch(name)
+    super(BlobFile, self).__init__(name, mode + 'b')
+    self.blob = blob

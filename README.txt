@@ -33,6 +33,7 @@ This product has been tested on:
 * Plone 3.3 (with plone.app.blob 1.5)
 * Plone 4.0
 * Plone 4.1
+* Plone 4.2
 
 Warning
 =======

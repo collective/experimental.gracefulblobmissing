@@ -5,19 +5,21 @@ Changelog
 ------------------
 
 * fixed errors when reindexing SearchbleText index [keul]
+* Added a patch for ZODB egg that Create the blob folder path and create (touch)
+  an empty file for each blob file if it's missing. [sneridagh]
 
 0.3.0 (2011-09-30)
 ------------------
 
 * fixed dependency on ``collective.monkeypatcher`` >= 1.0 [keul]
-* pached also getScale method, used by some atct views [keul] 
+* pached also getScale method, used by some atct views [keul]
 
 0.2.0 (2011-06-06)
 ------------------
 
 * fixed dependencies [keul]
 * direct access to files with missing blobs
-  now redirect to the view with a warning [keul] 
+  now redirect to the view with a warning [keul]
 
 0.1.0 (2010-11-19)
 ------------------
