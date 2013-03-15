@@ -58,4 +58,13 @@
         docstringWarning="true"
         />
 
+    <monkey:patch
+        description="Create the blob-file if it's missing."
+        class="ZEO.ClientStorage.ClientStorage"
+        original="loadBlob"
+        replacement=".patches.patched_loadBlob"
+        docstringWarning="true"
+        />
+
+
 </configure>

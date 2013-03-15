@@ -16,8 +16,8 @@ using production data, but you don't always want to copy all blobs.
 
 __ http://dev.plone.org/plone/ticket/11293
 
-This product will simply monkey-pach some points inside Plone, so visiting a ATFile/ATImage without its
-BLOB available will not show any errors to visitors.
+This product monkey-patches some points inside Plone, so visiting objects that store content in blob-Fields (like ATFile/ATImage) without its BLOB available will not show any errors to visitors. Instead a empty file is created in the place where the blob-file should be.
+
 
 Catalog
 -------
@@ -39,7 +39,7 @@ Warning
 =======
 
 This is designed only for **development/staging** environment. *Do not use in production* if you are
-not sure of what you are doing!
+not 100% sure of what you are doing!
 
 Credits
 =======

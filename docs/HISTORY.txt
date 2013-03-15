@@ -4,6 +4,9 @@ Changelog
 0.4.0 (Unreleased)
 ------------------
 
+* modify patch to not touch every file but only create file with a string in it when it is missing [pbauer]
+* patch ZEO to create missing blob-files [pbauer]
+* add logging-message when creating a missing blog-file [pbauer]
 * fixed errors when reindexing SearchbleText index [keul]
 * Added a patch for ZODB egg that Create the blob folder path and create (touch)
   an empty file for each blob file if it's missing. [sneridagh]
