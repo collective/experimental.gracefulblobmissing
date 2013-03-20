@@ -4,7 +4,7 @@ from plone.app.blob.utils import openBlob
 from plone.app.imaging.interfaces import IImageScaleHandler
 from Products.CMFCore.utils import getToolByName
 from sh import mkdir
-from ZEO.ClientStorage import ClientStorage
+from ZEO import ClientStorage
 from ZODB.blob import BlobFile
 from ZODB.POSException import POSKeyError, ConflictError, Unsupported
 
