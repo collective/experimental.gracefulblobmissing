@@ -12,13 +12,17 @@ setup(name='experimental.gracefulblobmissing',
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Framework :: Plone",
+        "Framework :: Plone :: 4.0",
         "Programming Language :: Python",
         "Development Status :: 4 - Beta",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2.6",
+        "Programming Language :: Python :: 2.7",
         ],
       keywords='plone blob patch',
       author='RedTurtle Technology',
       author_email='sviluppoplone@redturtle.it',
-      url='http://svn.plone.org/svn/collective/experimental.gracefulblobmissing/',
+      url='https://github.com/collective/experimental.gracefulblobmissing',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['experimental'],
@@ -29,7 +33,6 @@ setup(name='experimental.gracefulblobmissing',
           'collective.monkeypatcher>=1.0',
           'plone.app.blob',
           'sh'
-          # -*- Extra requirements: -*-
       ],
       entry_points="""
       # -*- Entry points: -*-
