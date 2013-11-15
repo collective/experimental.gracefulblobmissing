@@ -6,13 +6,15 @@ version = '0.4.0'
 setup(name='experimental.gracefulblobmissing',
       version=version,
       description="Patch for Plone. Don't raise errors for file contents with missing BLOB file",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Framework :: Plone",
         "Framework :: Plone :: 4.0",
+        "Framework :: Plone :: 4.1",
+        "Framework :: Plone :: 4.2",
         "Programming Language :: Python",
         "Development Status :: 4 - Beta",
         "Programming Language :: Python",

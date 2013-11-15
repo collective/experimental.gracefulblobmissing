@@ -30,10 +30,11 @@ Requirements
 
 This product has been tested on:
 
-* Plone 3.3 (with plone.app.blob 1.5)
 * Plone 4.0
 * Plone 4.1
 * Plone 4.2
+
+For Plone 3 compatiblity, look stay on version 0.3.0 or lower.
 
 Warning
 =======
