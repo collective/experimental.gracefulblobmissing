@@ -106,11 +106,7 @@ def patched_SearchableText(self):
 
 def patched_blob_init(self, name, mode, blob):
     if not os.path.exists(name):
-        mkdir("-p", '/'.join(name.split('/')[:-1]))
-        fo = open(name, 'w')
-        fo.write("File created by experimental.gracefulblobmissing.")
-        fo.close()
-        logger.info("Created missing blob-file %s" % name)
+        create_empty_blob(name)
     super(BlobFile, self).__init__(name, mode + 'b')
     self.blob = blob
 
@@ -129,12 +125,7 @@ def patched_loadBlob(self, oid, serial):
             return blob_filename
         else:
             # create empty file
-            mkdir("-p", '/'.join(blob_filename.split('/')[:-1]))
-            fo = open(blob_filename, 'w')
-            fo.write("File created by experimental.gracefulblobmissing.")
-            fo.close()
-            logger.info("Created missing blob-file %s" % blob_filename)
-
+            create_empty_blob(blob_filename)
         if os.path.exists(blob_filename):
             return blob_filename
         else:
@@ -146,11 +137,7 @@ def patched_loadBlob(self, oid, serial):
         return ClientStorage._accessed(blob_filename)
     else:
         # create empty file
-        mkdir("-p", '/'.join(blob_filename.split('/')[:-1]))
-        fo = open(blob_filename, 'w')
-        fo.write("File created by experimental.gracefulblobmissing.")
-        fo.close()
-        logger.info("Created missing blob-file %s" % blob_filename)
+        create_empty_blob(blob_filename)
 
     if os.path.exists(blob_filename):
         return ClientStorage._accessed(blob_filename)
@@ -185,3 +172,20 @@ def patched_loadBlob(self, oid, serial):
 
     finally:
         lock.close()
+
+
+def patched_loadBlob_zodb(self, oid, serial):
+    """Return the filename where the blob file can be found.
+    """
+    filename = self.fshelper.getBlobFilename(oid, serial)
+    if not os.path.exists(filename):
+        create_empty_blob(filename)
+    return filename
+
+
+def create_empty_blob(filename):
+    mkdir("-p", '/'.join(filename.split('/')[:-1]))
+    fo = open(filename, 'w')
+    fo.write("File created by experimental.gracefulblobmissing.")
+    fo.close()
+    logger.info("Created missing blob-file %s" % filename)
