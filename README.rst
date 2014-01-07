@@ -16,13 +16,13 @@ using production data, but you don't always want to copy all blobs.
 
 __ http://dev.plone.org/plone/ticket/11293
 
-This product monkey-patches some points inside Plone, so visiting objects that store content in blob-Fields (like ATFile/ATImage) without its BLOB available will not show any errors to visitors. Instead a empty file is created in the place where the blob-file should be.
+This product monkey-patches some points inside Plone, so visiting objects that store content in blob-Fields (like ATFile/ATImage) without its BLOB available will not show any errors to visitors. Instead a file only containing the string "File created by experimental.gracefulblobmissing." is created in the place where the blob-file should be.
 
 
 Catalog
 -------
 
-This product also patch the ``SearchableText`` Archetypes method, so you can reindex
+This product also patches the ``SearchableText`` Archetypes method, so you can reindex
 you catalog without errors.
 
 Requirements
@@ -33,6 +33,7 @@ This product has been tested on:
 * Plone 4.0
 * Plone 4.1
 * Plone 4.2
+* Plone 4.3
 
 For Plone 3 compatiblity, look stay on version 0.3.0 or lower.
 
