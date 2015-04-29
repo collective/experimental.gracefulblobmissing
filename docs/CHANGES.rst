@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.4.0 (Unreleased)
+0.4.0 (2015-04-29)
 ------------------
 
 * modify patch to not touch every file but only create file with a string in it when it is missing [pbauer]
