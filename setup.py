@@ -1,13 +1,13 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.4.0'
+version = '0.4.0.dev0'
 
 setup(name='experimental.gracefulblobmissing',
       version=version,
       description="Patch for Plone. Don't raise errors for file contents with missing BLOB file",
       long_description=open("README.rst").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+                       open(os.path.join("docs", "CHANGES.rst")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
