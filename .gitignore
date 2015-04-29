@@ -1,0 +1,6 @@
+*.py?
+*.egg-info/
+*.mo
+*.project
+*.pydevproject
+.settings/
