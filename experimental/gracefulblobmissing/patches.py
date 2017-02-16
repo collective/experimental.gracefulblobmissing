@@ -9,11 +9,14 @@ from Products.CMFCore.utils import getToolByName
 from sh import mkdir
 from ZEO import ClientStorage
 from ZODB.blob import BlobFile
-from ZODB.POSException import POSKeyError, ConflictError, Unsupported
+from ZODB.POSException import ConflictError
+from ZODB.POSException import POSKeyError
+from ZODB.POSException import Unsupported
 
 import logging
 import os
 import time
+
 
 logger = logging.getLogger(__name__)
 
@@ -38,9 +41,20 @@ def patched_class_get_size(self):
         return 0
 
 
-def patched_field_index_html(self, instance, REQUEST=None, RESPONSE=None, disposition='inline'):
+def patched_field_index_html(
+    self,
+    instance,
+    REQUEST=None,
+    RESPONSE=None,
+    disposition='inline',
+):
     try:
-        blob = self._old_index_html(instance, REQUEST=REQUEST, RESPONSE=RESPONSE, disposition=disposition)
+        blob = self._old_index_html(
+            instance,
+            REQUEST=REQUEST,
+            RESPONSE=RESPONSE,
+            disposition=disposition,
+        )
         if blob:
             return blob
         raise POSKeyError()
@@ -48,7 +62,8 @@ def patched_field_index_html(self, instance, REQUEST=None, RESPONSE=None, dispos
         if not RESPONSE:
             RESPONSE = instance.REQUEST.RESPONSE
         putils = getToolByName(instance, 'plone_utils')
-        putils.addPortalMessage('Missing BLOB file for %s' % instance.absolute_url_path(), type='warning')
+        putils.addPortalMessage('Missing BLOB file for %s' %
+                                instance.absolute_url_path(), type='warning')
         RESPONSE.redirect(instance.absolute_url() + '/view')
 
 
@@ -88,7 +103,12 @@ def patched_SearchableText(self):
             vocab = field.Vocabulary(self)
             if isinstance(datum, list) or isinstance(datum, tuple):
                 # Unmangle vocabulary: we index key AND value
-                vocab_values = map(lambda value, vocab=vocab: vocab.getValue(value, ''), datum)
+                vocab_values = map(
+                    lambda value, vocab=vocab: (
+                        vocab.getValue(value, ''),
+                        datum
+                    )
+                )
                 datum = list(datum)
                 datum.extend(vocab_values)
                 datum = ' '.join(datum)
