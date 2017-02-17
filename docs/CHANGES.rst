@@ -4,7 +4,7 @@ Changelog
 0.4.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Try to guess the right blob type. [ale-rt]
 
 
 0.4.0 (2015-04-29)
