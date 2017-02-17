@@ -5,12 +5,15 @@ try:
     from plone.app.imaging.interfaces import IImageScaleHandler
 except ImportError:
     pass
+from pkg_resources import resource_filename
 from Products.CMFCore.utils import getToolByName
+from shutil import copyfile
 from ZEO import ClientStorage
 from ZODB.blob import BlobFile
 from ZODB.POSException import ConflictError
 from ZODB.POSException import POSKeyError
 from ZODB.POSException import Unsupported
+from zope.globalrequest import getRequest
 
 import logging
 import os
@@ -259,11 +262,37 @@ def patched_loadBlob_relstorage(self, cursor, oid, serial):
         lock.close()
 
 
+def guess_extension(blob=None):
+    ''' Try to guess the type of the blob out of thin air
+    '''
+    request = getRequest()
+    if not request:
+        return 'txt'
+    try:
+        published = repr(request.PUBLISHED.im_class)
+    except:
+        published = ''
+    if 'ImageScal' in published:
+        return 'png'
+    try:
+        last_parent = repr(request.other['PARENTS'][-1])
+    except:
+        last_parent = ''
+    if 'ImageScal' in last_parent:
+        return 'png'
+    return 'txt'
+
+
 def create_empty_blob(filename, blob=None):
     dirname = os.path.split(filename)[0]
     if not os.path.isdir(dirname):
         os.makedirs(dirname, 0700)
-    fo = open(filename, 'w')
-    fo.write("File created by experimental.gracefulblobmissing.")
-    fo.close()
-    logger.info("Created missing blob-file %s" % filename)
+
+    ext = guess_extension(blob)
+    source = resource_filename(
+        'experimental.gracefulblobmissing',
+        'dummies/blob.%s' % ext,
+    )
+
+    copyfile(source, filename)
+    logger.info("Created %s blob-file for missing %s", ext, filename)

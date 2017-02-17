@@ -7,6 +7,9 @@ Changelog
 - Add support for relstorage.
   [pbauer]
 
+- Try to guess the right blob type.
+  [ale-rt]
+
 
 0.5.0 (2018-12-14)
 ------------------
