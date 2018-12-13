@@ -34,7 +34,6 @@ setup(name='experimental.gracefulblobmissing',
       install_requires=[
           'setuptools',
           'collective.monkeypatcher>=1.0',
-          'plone.app.blob',
           'sh'
       ],
       entry_points="""

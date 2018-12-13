@@ -9,6 +9,7 @@
     <include package="collective.monkeypatcher" />
     <include package="collective.monkeypatcher" file="meta.zcml" />
 
+    <configure zcml:condition="installed plone.app.blob">
     <monkey:patch
         description="Fix get_size method for blob fields"
         class="plone.app.blob.field.BlobWrapper"
@@ -27,18 +28,21 @@
         />
 
     <monkey:patch
-        description="Fix get_size method for blob fields"
-        class="Products.ATContentTypes.content.base.ATCTMixin"
-        original="get_size"
-        replacement=".patches.patched_class_get_size"
-        docstringWarning="true"
-        />
-
-    <monkey:patch
         description="Fix getScale method for blob mixins"
         class="plone.app.blob.mixins.ImageFieldMixin"
         original="getScale"
         replacement=".patches.patched_getScale"
+        docstringWarning="true"
+        />
+
+    </configure>
+
+    <configure zcml:condition="installed Products.ATContentTypes">
+    <monkey:patch
+        description="Fix get_size method for blob fields"
+        class="Products.ATContentTypes.content.base.ATCTMixin"
+        original="get_size"
+        replacement=".patches.patched_class_get_size"
         docstringWarning="true"
         />
 
@@ -49,6 +53,7 @@
         replacement=".patches.patched_SearchableText"
         docstringWarning="true"
         />
+    </configure>
 
     <monkey:patch
         description="Create the blob folder path and create (touch) an empty file for each blob file if it's missing."

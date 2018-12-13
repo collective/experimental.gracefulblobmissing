@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from plone.app.blob.utils import openBlob
-from plone.app.imaging.interfaces import IImageScaleHandler
+try:
+    from plone.app.blob.utils import openBlob
+    from plone.app.imaging.interfaces import IImageScaleHandler
+except ImportError:
+    pass
 from Products.CMFCore.utils import getToolByName
 from sh import mkdir
 from ZEO import ClientStorage
