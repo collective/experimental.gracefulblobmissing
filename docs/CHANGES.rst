@@ -4,8 +4,9 @@ Changelog
 0.4.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Only patch plone.app.blob and Products.ATContentTypes if they are installed.
+  This makes this package compatible with a Archetypes-free Plone.
+  [gforcada]
 
 0.4.0 (2015-04-29)
 ------------------
