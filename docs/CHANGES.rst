@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.4.1 (unreleased)
+0.5.0 (2018-12-14)
 ------------------
 
 - Only patch plone.app.blob and Products.ATContentTypes if they are installed.
