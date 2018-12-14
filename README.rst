@@ -5,7 +5,7 @@ How to use
 
 The `BLOB support in Plone`__ is amazing for a lot of reasons.
 
-__ http://pypi.python.org/pypi/plone.app.blob
+__ https://pypi.org/project/plone.app.blob
 
 However, right now, Plone will raise errors when you visit a file content that use BLOB support,
 without having also the BLOB file.
@@ -34,6 +34,9 @@ This product has been tested on:
 * Plone 4.1
 * Plone 4.2
 * Plone 4.3
+* Plone 5.0
+* Plone 5.1
+* Plone 5.2
 
 For Plone 3 compatiblity, look stay on version 0.3.0 or lower.
 
