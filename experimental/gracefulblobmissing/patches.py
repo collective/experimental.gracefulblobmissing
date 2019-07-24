@@ -13,6 +13,7 @@ from ZODB.POSException import POSKeyError, ConflictError, Unsupported
 
 import logging
 import os
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -183,6 +184,20 @@ def patched_loadBlob_zodb(self, oid, serial):
     filename = self.fshelper.getBlobFilename(oid, serial)
     if not os.path.exists(filename):
         create_empty_blob(filename)
+    return filename
+
+
+def patched_loadBlob_relstorage(self, cursor, oid, serial):
+    """Return the filename where the blob file can be found.
+    """
+    filename = self.fshelper.getBlobFilename(oid, serial)
+    if not os.path.exists(filename):
+        create_empty_blob(filename)
+        return filename
+    try:
+        os.utime(filename, (time.time(), os.stat(filename).st_mtime))
+    except OSError:
+        pass  # We tried. :)
     return filename
 
 
