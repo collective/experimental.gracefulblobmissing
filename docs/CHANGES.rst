@@ -4,7 +4,8 @@ Changelog
 0.5.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add support for relstorage.
+  [pbauer]
 
 
 0.5.0 (2018-12-14)

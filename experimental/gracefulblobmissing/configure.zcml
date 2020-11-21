@@ -79,5 +79,14 @@
         docstringWarning="true"
         />
 
+    <configure zcml:condition="installed relstorage">
+    <monkey:patch
+        description="Create the blob-file if it's missing."
+        class="relstorage.blobhelper.BlobHelper"
+        original="loadBlob"
+        replacement=".patches.patched_loadBlob_relstorage"
+        docstringWarning="true"
+        />
+    </configure>
 
 </configure>

@@ -13,6 +13,7 @@ from ZODB.POSException import POSKeyError, ConflictError, Unsupported
 
 import logging
 import os
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -184,6 +185,57 @@ def patched_loadBlob_zodb(self, oid, serial):
     if not os.path.exists(filename):
         create_empty_blob(filename)
     return filename
+
+
+def patched_loadBlob_relstorage(self, cursor, oid, serial):
+    # Load a blob.  If it isn't present and we have a shared blob
+    # directory, then assume that it doesn't exist on the server
+    # and return None.
+    from relstorage.blobhelper import _accessed
+    from relstorage.blobhelper import _lock_blob
+
+    blob_filename = self.fshelper.getBlobFilename(oid, serial)
+    if self.shared_blob_dir:
+        if os.path.exists(blob_filename):
+            return blob_filename
+        else:
+            # All the blobs are in a shared directory.  If the
+            # file isn't here, it's not anywhere.
+            # Here is the patch!
+            # raise POSException.POSKeyError("No blob file", oid, serial)
+            create_empty_blob(blob_filename)
+
+    if os.path.exists(blob_filename):
+        return _accessed(blob_filename)
+
+    # First, we'll create the directory for this oid, if it doesn't exist.
+    self.fshelper.getPathForOID(oid, create=True)
+
+    # OK, it's not here and we (or someone) needs to get it.  We
+    # want to avoid getting it multiple times.  We want to avoid
+    # getting it multiple times even accross separate client
+    # processes on the same machine. We'll use file locking.
+
+    lock = _lock_blob(blob_filename)
+    try:
+        # We got the lock, so it's our job to download it.  First,
+        # we'll double check that someone didn't download it while we
+        # were getting the lock:
+
+        if os.path.exists(blob_filename):
+            return _accessed(blob_filename)
+
+        self.download_blob(cursor, oid, serial, blob_filename)
+
+        if os.path.exists(blob_filename):
+            return _accessed(blob_filename)
+
+        # We still raise the error here because if the blob is not in the
+        # relstorage-DB something is wrong
+        raise POSKeyError("No blob file", oid, serial)
+
+    finally:
+        lock.close()
 
 
 def create_empty_blob(filename):
