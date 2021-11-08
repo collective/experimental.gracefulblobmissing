@@ -286,7 +286,7 @@ def guess_extension(blob=None):
 def create_empty_blob(filename, blob=None):
     dirname = os.path.split(filename)[0]
     if not os.path.isdir(dirname):
-        os.makedirs(dirname, 0700)
+        os.makedirs(dirname, 0o700)
 
     ext = guess_extension(blob)
     source = resource_filename(
