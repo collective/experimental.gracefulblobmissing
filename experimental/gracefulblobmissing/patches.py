@@ -113,6 +113,8 @@ def patched_SearchableText(self):
                 datum.extend(vocab_values)
                 datum = ' '.join(datum)
             elif isinstance(datum, basestring):
+                # Note: this patched function is only used in Archetypes,
+                # so the Python2-only code is fine.
                 if isinstance(datum, unicode):
                     datum = datum.encode(charset)
                 value = vocab.getValue(datum, '')
