@@ -7,8 +7,8 @@ Changelog
 - Add support for relstorage.
   [pbauer]
 
-- Try to guess the right blob type.
-  [ale-rt]
+- Create dummy image blobs on the fly.
+  [ale-rt, mauritsvanrees]
 
 
 0.5.0 (2018-12-14)

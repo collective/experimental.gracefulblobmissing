@@ -13,11 +13,9 @@ from ZODB.blob import BlobFile
 from ZODB.POSException import ConflictError
 from ZODB.POSException import POSKeyError
 from ZODB.POSException import Unsupported
-from zope.globalrequest import getRequest
 
 import logging
 import os
-import time
 
 
 logger = logging.getLogger(__name__)
@@ -134,7 +132,7 @@ def patched_SearchableText(self):
 
 def patched_blob_init(self, name, mode, blob):
     if not os.path.exists(name):
-        create_empty_blob(name, blob)
+        create_empty_blob(name)
     super(BlobFile, self).__init__(name, mode + 'b')
     self.blob = blob
 
@@ -262,37 +260,15 @@ def patched_loadBlob_relstorage(self, cursor, oid, serial):
         lock.close()
 
 
-def guess_extension(blob=None):
-    ''' Try to guess the type of the blob out of thin air
-    '''
-    request = getRequest()
-    if not request:
-        return 'txt'
-    try:
-        published = repr(request.PUBLISHED.im_class)
-    except:
-        published = ''
-    if 'ImageScal' in published:
-        return 'png'
-    try:
-        last_parent = repr(request.other['PARENTS'][-1])
-    except:
-        last_parent = ''
-    if 'ImageScal' in last_parent:
-        return 'png'
-    return 'txt'
-
-
-def create_empty_blob(filename, blob=None):
+def create_empty_blob(filename):
     dirname = os.path.split(filename)[0]
     if not os.path.isdir(dirname):
         os.makedirs(dirname, 0o700)
 
-    ext = guess_extension(blob)
     source = resource_filename(
         'experimental.gracefulblobmissing',
-        'dummies/blob.%s' % ext,
+        'dummies/blob.png',
     )
 
     copyfile(source, filename)
-    logger.info("Created %s blob-file for missing %s", ext, filename)
+    logger.info("Created blob-file for missing %s", filename)
