@@ -6,7 +6,6 @@ try:
 except ImportError:
     pass
 from Products.CMFCore.utils import getToolByName
-from sh import mkdir
 from ZEO import ClientStorage
 from ZODB.blob import BlobFile
 from ZODB.POSException import ConflictError
@@ -132,7 +131,7 @@ def patched_SearchableText(self):
 
 def patched_blob_init(self, name, mode, blob):
     if not os.path.exists(name):
-        create_empty_blob(name)
+        create_empty_blob(name, blob)
     super(BlobFile, self).__init__(name, mode + 'b')
     self.blob = blob
 
@@ -260,8 +259,10 @@ def patched_loadBlob_relstorage(self, cursor, oid, serial):
         lock.close()
 
 
-def create_empty_blob(filename):
-    mkdir("-p", '/'.join(filename.split('/')[:-1]))
+def create_empty_blob(filename, blob=None):
+    dirname = os.path.split(filename)[0]
+    if not os.path.isdir(dirname):
+        os.makedirs(dirname, 0700)
     fo = open(filename, 'w')
     fo.write("File created by experimental.gracefulblobmissing.")
     fo.close()

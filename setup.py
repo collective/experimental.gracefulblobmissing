@@ -42,7 +42,6 @@ setup(
     install_requires=[
         "setuptools",
         "collective.monkeypatcher>=1.0",
-        "sh",
     ],
     entry_points="""
       # -*- Entry points: -*-
