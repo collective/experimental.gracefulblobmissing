@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.5.1 (unreleased)
-------------------
+1.0 (2022-03-11)
+----------------
 
 - Add support for relstorage.
   [pbauer]
