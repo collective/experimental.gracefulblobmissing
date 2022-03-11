@@ -1,8 +1,6 @@
 from setuptools import find_packages
 from setuptools import setup
 
-import os
-
 
 version = "0.5.1.dev0"
 
@@ -15,7 +13,7 @@ setup(
     ),
     long_description=open("README.rst").read()
     + "\n"
-    + open(os.path.join("docs", "CHANGES.rst")).read(),
+    + open("CHANGES.rst").read(),
     # Get more strings from
     # http://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
