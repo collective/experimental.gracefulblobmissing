@@ -16,25 +16,15 @@ This product monkey-patches parts of Plone, so that visiting objects that store 
 Instead a file only containing the string "File created by experimental.gracefulblobmissing." is created in the place where the blob-file should be.
 
 
-Catalog
--------
-
-This product also patches the ``SearchableText`` Archetypes method, so you can reindex you catalog without errors.
-
-
 Requirements
 ============
 
 This product has been tested on:
 
-* Plone 4.0
-* Plone 4.1
-* Plone 4.2
-* Plone 4.3
-* Plone 5.0
 * Plone 5.1
 * Plone 5.2
 
+For Plone 4 / Archetypes compatibility stay below version 2.0.
 For Plone 3 compatiblity stay on version 0.3.0 or lower.
 
 
