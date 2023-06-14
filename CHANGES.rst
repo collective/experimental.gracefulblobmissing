@@ -1,10 +1,11 @@
 Changelog
 =========
 
-1.1 (unreleased)
+2.0 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Remove Archetypes compatibility code.
+  [thet]
 
 
 1.0 (2022-03-11)
