@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0 (unreleased)
+2.0 (2023-08-03)
 ----------------
 
 - Remove Archetypes compatibility code.
