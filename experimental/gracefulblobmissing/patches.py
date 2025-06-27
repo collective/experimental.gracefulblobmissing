@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from pkg_resources import resource_filename
 from shutil import copyfile
-from ZEO import ClientStorage
 from ZODB.blob import BlobFile
 from ZODB.POSException import POSKeyError
 from ZODB.POSException import Unsupported
@@ -24,6 +23,7 @@ def patched_loadBlob(self, oid, serial):
     # Load a blob.  If it isn't present and we have a shared blob
     # directory, then assume that it doesn't exist on the server
     # and return None.
+    from ZEO import ClientStorage
 
     if self.fshelper is None:
         raise Unsupported("No blob cache directory is configured.")

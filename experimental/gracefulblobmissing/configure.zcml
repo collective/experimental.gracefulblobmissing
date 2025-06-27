@@ -14,6 +14,7 @@
         docstringWarning="true"
         />
 
+    <configure zcml:condition="installed ZEO">
     <monkey:patch
         description="Create the blob-file if it's missing."
         class="ZEO.ClientStorage.ClientStorage"
@@ -21,6 +22,7 @@
         replacement=".patches.patched_loadBlob"
         docstringWarning="true"
         />
+    </configure>
 
     <monkey:patch
         description="Create the blob-file if it's missing."
