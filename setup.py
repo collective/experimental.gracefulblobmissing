@@ -28,7 +28,7 @@ setup(
     keywords="plone blob patch",
     author="RedTurtle Technology",
     author_email="sviluppoplone@redturtle.it",
-    url="http://plone.org/products/experimental.gracefulblobmissing",
+    url="https://github.com/collective/experimental.gracefulblobmissing",
     license="GPL",
     include_package_data=True,
     zip_safe=False,
