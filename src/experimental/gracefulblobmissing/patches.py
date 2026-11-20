@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from importlib.resources import files
 from shutil import copyfile
 from ZODB.blob import BlobFile
@@ -8,14 +7,13 @@ from ZODB.POSException import Unsupported
 import logging
 import os
 
-
 logger = logging.getLogger(__name__)
 
 
 def patched_blob_init(self, name, mode, blob):
     if not os.path.exists(name):
         create_empty_blob(name)
-    super(BlobFile, self).__init__(name, mode + 'b')
+    super(BlobFile, self).__init__(name, mode + "b")
     self.blob = blob
 
 
@@ -56,7 +54,7 @@ def patched_loadBlob(self, oid, serial):
 
     # OK, it's not here and we (or someone) needs to get it.  We
     # want to avoid getting it multiple times.  We want to avoid
-    # getting it multiple times even accross separate client
+    # getting it multiple times even across separate client
     # processes on the same machine. We'll use file locking.
 
     lock = ClientStorage._lock_blob(blob_filename)
@@ -69,7 +67,7 @@ def patched_loadBlob(self, oid, serial):
             return ClientStorage._accessed(blob_filename)
 
         # Ask the server to send it to us.  When this function
-        # returns, it will have been sent. (The recieving will
+        # returns, it will have been sent. (The receiving will
         # have been handled by the asyncore thread.)
 
         self._server.sendBlob(oid, serial)
@@ -84,8 +82,7 @@ def patched_loadBlob(self, oid, serial):
 
 
 def patched_loadBlob_zodb(self, oid, serial):
-    """Return the filename where the blob file can be found.
-    """
+    """Return the filename where the blob file can be found."""
     filename = self.fshelper.getBlobFilename(oid, serial)
     if not os.path.exists(filename):
         create_empty_blob(filename)
@@ -118,7 +115,7 @@ def patched_loadBlob_relstorage(self, cursor, oid, serial):
 
     # OK, it's not here and we (or someone) needs to get it.  We
     # want to avoid getting it multiple times.  We want to avoid
-    # getting it multiple times even accross separate client
+    # getting it multiple times even across separate client
     # processes on the same machine. We'll use file locking.
 
     lock = _lock_blob(blob_filename)

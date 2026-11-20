@@ -1,9 +1,6 @@
 # Changelog
 
-## 3.0 (unreleased)
-
-- Nothing changed yet.
-
+<!-- towncrier release notes start -->
 
 ## 2.0 (2023-08-03)
 
@@ -38,7 +35,7 @@
 ## 0.3.0 (2011-09-30)
 
 * fixed dependency on `collective.monkeypatcher` >= 1.0 [keul]
-* pached also getScale method, used by some atct views [keul]
+* patched also getScale method, used by some atct views [keul]
 
 ## 0.2.0 (2011-06-06)
 

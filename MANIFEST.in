@@ -1,6 +1,7 @@
 include *.md
 
 recursive-include docs *
-recursive-include experimental *
+recursive-include src/experimental/gracefulblobmissing *.zcml *.png
 
+prune news
 global-exclude *.pyc
