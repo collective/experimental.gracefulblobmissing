@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from pkg_resources import resource_filename
+from importlib.resources import files
 from shutil import copyfile
 from ZODB.blob import BlobFile
 from ZODB.POSException import POSKeyError
@@ -148,9 +148,9 @@ def create_empty_blob(filename):
     if not os.path.isdir(dirname):
         os.makedirs(dirname, 0o700)
 
-    source = resource_filename(
-        'experimental.gracefulblobmissing',
-        'dummies/blob.png',
+    source = files("experimental.gracefulblobmissing").joinpath(
+        "dummies",
+        "blob.png",
     )
 
     copyfile(source, filename)
