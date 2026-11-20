@@ -9,18 +9,15 @@ For developers this can be a little bit boring.
 It's quite common to copy a production `Data.fs` for developing using production data, but you don't always want to copy all blobs.
 
 This product monkey-patches parts of Plone, so that visiting objects that store content in the blob storage without having the BLOB available will not lead to errors.
-Instead a file only containing the string "File created by experimental.gracefulblobmissing." is created in the place where the blob-file should be.
+Instead, a placeholder image is created where the missing blob file should be.
 
 
 ## Requirements
 
-This product has been tested on:
-
-* Plone 5.1
-* Plone 5.2
+This product supports Plone 6.2 and later on Python 3.11 and later.
 
 For Plone 4 / Archetypes compatibility stay below version 2.0.
-For Plone 3 compatiblity stay on version 0.3.0 or lower.
+For Plone 3 compatibility stay on version 0.3.0 or lower.
 
 
 ## Warning

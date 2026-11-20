@@ -16,25 +16,28 @@ setup(
     classifiers=[
         "Framework :: Plone",
         "Framework :: Plone :: 6.2",
-        "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+        "Framework :: Plone :: 6.3",
         "Programming Language :: Python",
         "Development Status :: 4 - Beta",
-        "Programming Language :: Python",
-        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
         "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
     ],
     keywords="plone blob patch",
     author="RedTurtle Technology",
     author_email="sviluppoplone@redturtle.it",
-    url="https://github.com/collective/experimental.gracefulblobmissing",
-    license="GPL",
+    project_urls={
+        "Homepage": "https://github.com/collective/experimental.gracefulblobmissing"
+    },
+    license_expression="GPL-2.0-or-later",
     include_package_data=True,
     zip_safe=False,
+    python_requires=">=3.11",
     install_requires=[
         "collective.monkeypatcher>=1.0",
+        "ZODB",
     ],
     entry_points="""
       # -*- Entry points: -*-
