@@ -9,7 +9,8 @@ setup(
         "Patch for Plone. "
         "Don't raise errors for file contents with missing BLOB file"
     ),
-    long_description=open("README.rst").read() + "\n" + open("CHANGES.rst").read(),
+    long_description=open("README.md").read() + "\n" + open("CHANGES.md").read(),
+    long_description_content_type="text/markdown",
     # Get more strings from
     # http://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[

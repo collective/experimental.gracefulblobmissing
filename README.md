@@ -1,23 +1,18 @@
-.. contents::
+# How to use
 
-How to use
-==========
+The [BLOB support in Plone](https://pypi.org/project/plone.app.blob) is amazing for a lot of reasons.
 
-The `BLOB support in Plone`__ is amazing for a lot of reasons.
-
-__ https://pypi.org/project/plone.app.blob
 
 However Plone will raise errors when you visit a file content that use BLOB support without also having the BLOB file.
 
 For developers this can be a little bit boring.
-It's quite common to copy a production ``Data.fs`` for developing using production data, but you don't always want to copy all blobs.
+It's quite common to copy a production `Data.fs` for developing using production data, but you don't always want to copy all blobs.
 
 This product monkey-patches parts of Plone, so that visiting objects that store content in the blob storage without having the BLOB available will not lead to errors.
 Instead a file only containing the string "File created by experimental.gracefulblobmissing." is created in the place where the blob-file should be.
 
 
-Requirements
-============
+## Requirements
 
 This product has been tested on:
 
@@ -28,30 +23,22 @@ For Plone 4 / Archetypes compatibility stay below version 2.0.
 For Plone 3 compatiblity stay on version 0.3.0 or lower.
 
 
-Warning
-=======
+## Warning
 
 This is designed only for **development/staging** environment. *Do not use in production* if you are not 100% sure of what you are doing!
 
 
-Credits
-=======
+## Credits
 
-Developed with the support of `S. Anna Hospital, Ferrara`__; S. Anna Hospital supports the `PloneGov initiative`__.
+Developed with the support of [S. Anna Hospital, Ferrara](http://www.ospfe.it/); S. Anna Hospital supports the [PloneGov initiative](http://www.plonegov.it/).
 
-.. image:: http://www.ospfe.it/ospfe-logo.jpg
-   :alt: OspFE logo
-
-__ http://www.ospfe.it/
-__ http://www.plonegov.it/
+![OspFE logo](http://www.ospfe.it/ospfe-logo.jpg)
 
 
-Authors
-=======
+
+## Authors
 
 This product was developed by RedTurtle Technology team.
 
-.. image:: http://www.redturtle.it/redturtle_banner.png
-   :alt: RedTurtle Technology Site
-   :target: http://www.redturtle.it/
+[![RedTurtle Technology Site](http://www.redturtle.it/redturtle_banner.png)](http://www.redturtle.it/)
 
